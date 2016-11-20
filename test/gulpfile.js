@@ -11,6 +11,6 @@ gulp.task('clean', () => del('build'));
 gulp.task('default', ['clean'], () =>
     gulp.src('test-icon.png')
         .pipe(chromeManifestIconify({
-            resizeMode: 'nearestNeighbor'
+            resizeMode: chromeManifestIconify.ResizeMode.NEAREST_NEIGHBOR
         }))
         .pipe(gulp.dest('build')));
