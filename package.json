@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "chai": "*",
+    "codeclimate-test-reporter": "^0.4.0",
     "del": "^2.2.2",
     "eslint": "^3.10.0",
     "eslint-config-steven-roberts": "Steven-Roberts/eslint-config",
