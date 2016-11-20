@@ -1,5 +1,12 @@
 # gulp-chrome-manifest-iconify
 
+[![NPM version](https://img.shields.io/npm/v/gulp-chrome-manifest-iconify.svg?style=flat)](https://www.npmjs.com/package/gulp-chrome-manifest-iconify)
+[![Build Status](https://travis-ci.org/Steven-Roberts/gulp-chrome-manifest-iconify.svg?branch=master)](https://travis-ci.org/Steven-Roberts/gulp-chrome-manifest-iconify)
+[![dependencies Status](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify)
+[![devDependencies Status](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify?type=dev)
+[![Test Coverage](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/badges/coverage.svg)](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/coverage)
+[![Code Climate](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/badges/gpa.svg)](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify)
+
 A [Gulp](https://github.com/gulpjs/gulp) plugin for
 [chrome-manifest-iconify](https://github.com/Steven-Roberts/chrome-manifest-iconify)
 
