@@ -11,15 +11,16 @@ const chai = require('chai');
 
 chai.should();
 
-const getFile = path.join.bind(null, __dirname);
+const getPath = path.join.bind(null, __dirname);
+const getManifestPath = getPath.bind(null, 'manifests');
 
 describe('gulp-chrome-manifest-iconify', () => {
     it('should emit error on streamed files', (cb) => {
-        gulp.src(getFile('test-icon.png'), {
+        gulp.src(getPath('test-icon.png'), {
             buffer: false
         })
             .pipe(chromeManifestIconify({
-                manifest: getFile('manifest.json')
+                manifest: getManifestPath('manifest.json')
             }))
             .on('error', (err) => {
                 err.should.be.an.instanceOf(gutil.PluginError)
@@ -29,11 +30,11 @@ describe('gulp-chrome-manifest-iconify', () => {
     });
 
     it('should let null files pass through', (cb) => {
-        gulp.src(getFile('test-icon.png'), {
+        gulp.src(getPath('test-icon.png'), {
             read: false
         })
             .pipe(chromeManifestIconify({
-                manifest: getFile('manifest.json')
+                manifest: getManifestPath('manifest.json')
             }))
             .on('data', (chunk) => {
                 cb(new Error(`Stream contains ${chunk}`));
@@ -42,7 +43,7 @@ describe('gulp-chrome-manifest-iconify', () => {
     });
 
     it('should emit error when icon generation fails', (cb) => {
-        gulp.src(getFile('test-icon.png'))
+        gulp.src(getPath('test-icon.png'))
             .pipe(chromeManifestIconify({
                 manifest: Math.PI
             }))
@@ -56,19 +57,21 @@ describe('gulp-chrome-manifest-iconify', () => {
 
     it('should generate icons', (cb) => {
         const expectedFilePaths = [
-            getFile('icon-16.png'),
-            getFile('icon-128.bmp'),
-            getFile('a', 'icon-38.jpg')
+            getManifestPath('icon-16.png'),
+            getManifestPath('icon-128.bmp'),
+            getManifestPath('a', 'icon-38.jpg')
         ];
 
-        gulp.src(getFile('test-icon.png'))
+        gulp.src(getPath('test-icon.png'))
             .pipe(chromeManifestIconify({
-                manifest: getFile('manifest.json')
+                manifest: getManifestPath('manifest.json')
             }))
             .pipe(streamAssert.length(expectedFilePaths.length))
             .pipe(streamAssert.all((i) => {
                 i.should.have.property('path')
                     .that.is.oneOf(expectedFilePaths);
+
+                i.should.have.property('base', getManifestPath());
 
                 i.should.have.property('contents')
                     .that.has.length.at.least(0)

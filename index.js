@@ -24,6 +24,7 @@ const through2 = require('through2');
 const gutil = require('gulp-util');
 const chromeManifestIconify = require('chrome-manifest-iconify');
 const Promise = require('bluebird');
+const path = require('path');
 
 /**
  * A Gulp plugin that generates icon set for a Chrome extension or app by
@@ -63,7 +64,11 @@ module.exports = (options) =>
         Promise.try(chromeManifestIconify.async.bind(null, actualOptions))
             .then((icons) => {
                 // eslint-disable-next-line no-invalid-this
-                icons.forEach((i) => this.push(new gutil.File(i)));
+                icons.forEach((i) => this.push(new gutil.File({
+                    path: i.path,
+                    contents: i.contents,
+                    base: path.dirname(options.manifest)
+                })));
             })
             .then(cb, (err) => {
                 cb(new gutil.PluginError(pluginName, err));
