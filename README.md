@@ -1,6 +1,7 @@
 # gulp-chrome-manifest-iconify
 
 [![NPM version](https://img.shields.io/npm/v/gulp-chrome-manifest-iconify.svg?style=flat)](https://www.npmjs.com/package/gulp-chrome-manifest-iconify)
+[![node](https://img.shields.io/node/v/gulp-chrome-manifest-iconify.svg)](https://www.npmjs.com/package/gulp-chrome-manifest-iconify)
 [![Build Status](https://travis-ci.org/Steven-Roberts/gulp-chrome-manifest-iconify.svg?branch=master)](https://travis-ci.org/Steven-Roberts/gulp-chrome-manifest-iconify)
 [![dependencies Status](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify?type=dev)
@@ -36,7 +37,7 @@ npm install --save-dev gulp-chrome-manifest-iconify
 ### gulp-chrome-manifest-iconify
 The gulp-chrome-manifest-iconify module
 
-**Example**  
+**Example**
 ```js
 const gulp = require('gulp');
 const chromeManifestIconify = require('gulp-chrome-manifest-iconify');
@@ -60,22 +61,22 @@ gulp.task('default', () =>
 A Gulp plugin that generates icon set for a Chrome extension or app by
 parsing the v2 manifest.
 
-**Kind**: Exported function  
-**Returns**: <code>Stream</code> - A Node stream that produces the icons  
+**Kind**: Exported function
+**Returns**: <code>Stream</code> - A Node stream that produces the icons
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | options | <code>object</code> |  | The options for generating the icons |
 | [options.manifest] | <code>string</code> | <code>&quot;manifest.json&quot;</code> | The path to the v2 manifest.json |
-| [options.resizeMode] | <code>[ResizeMode](#module_gulp-chrome-manifest-iconify--module.exports.ResizeMode)</code> | <code>ResizeMode.BILINEAR</code> | The algorithm for resizing the master Icon |
+| [options.resizeMode] | [<code>ResizeMode</code>](#module_gulp-chrome-manifest-iconify--module.exports.ResizeMode) | <code>ResizeMode.BILINEAR</code> | The algorithm for resizing the master Icon |
 
 <a name="module_gulp-chrome-manifest-iconify--module.exports.ResizeMode"></a>
 
 ##### module.exports.ResizeMode
 Enum for resize algorithms
 
-**Kind**: static enum of <code>[module.exports](#exp_module_gulp-chrome-manifest-iconify--module.exports)</code>  
-**Read only**: true  
+**Kind**: static enum of [<code>module.exports</code>](#exp_module_gulp-chrome-manifest-iconify--module.exports)
+**Read only**: true
 **Properties**
 
 | Name | Default |
