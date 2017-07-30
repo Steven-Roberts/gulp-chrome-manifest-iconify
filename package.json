@@ -1,6 +1,6 @@
 {
   "name": "gulp-chrome-manifest-iconify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A gulp plugin that takes a master icon and automatically generates icon set for your Chrome extension or app by parsing the v2 manifest",
   "author": "Steven Roberts (https://steven-roberts.github.io/)",
   "homepage": "https://github.com/Steven-Roberts/gulp-chrome-manifest-iconify",
@@ -8,11 +8,6 @@
   "bugs": {
     "url": "https://github.com/Steven-Roberts/gulp-chrome-manifest-iconify/issues"
   },
-  "main": "index.js",
-  "license": "MIT",
-  "files": [
-    "index.js"
-  ],
   "keywords": [
     "gulp",
     "chrome extension",
@@ -20,6 +15,14 @@
     "manifest",
     "chrome",
     "extension"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "index.js"
   ],
   "scripts": {
     "docs": "jsdoc2md -d 3 -t jsdoc2md/template.hbs index.js node_modules/chrome-manifest-iconify/**/*.js > README.md",
@@ -31,7 +34,7 @@
   },
   "dependencies": {
     "bluebird": "^3.4.6",
-    "chrome-manifest-iconify": "^3.0.6",
+    "chrome-manifest-iconify": "^3.0.7",
     "gulp-util": "^3.0.7",
     "through2": "^2.0.1"
   },
@@ -43,6 +46,7 @@
     "eslint-config-steven-roberts": "github:Steven-Roberts/eslint-config",
     "gulp": "^3.9.1",
     "istanbul": "*",
+    "jsdoc-to-markdown": "^3.0.0",
     "mocha": "^3.4.2",
     "stream-assert": "^2.0.3"
   }
