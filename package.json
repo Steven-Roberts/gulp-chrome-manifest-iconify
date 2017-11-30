@@ -33,21 +33,21 @@
     "report": "npm run coverage && codeclimate-test-reporter < coverage/lcov.info"
   },
   "dependencies": {
-    "bluebird": "^3.4.6",
+    "bluebird": "^3.5.1",
     "chrome-manifest-iconify": "^3.0.7",
     "gulp-util": "^3.0.7",
     "through2": "^2.0.1"
   },
   "devDependencies": {
-    "chai": "^4.1.0",
+    "chai": "^4.1.2",
     "codeclimate-test-reporter": "^0.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.3.0",
+    "eslint": "^4.12.1",
     "eslint-config-steven-roberts": "github:Steven-Roberts/eslint-config",
     "gulp": "^3.9.1",
     "istanbul": "*",
-    "jsdoc-to-markdown": "^3.0.0",
-    "mocha": "^3.4.2",
+    "jsdoc-to-markdown": "^3.0.2",
+    "mocha": "^4.0.1",
     "stream-assert": "^2.0.3"
   }
 }

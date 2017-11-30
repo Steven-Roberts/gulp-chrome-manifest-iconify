@@ -5,8 +5,8 @@
 [![Build Status](https://travis-ci.org/Steven-Roberts/gulp-chrome-manifest-iconify.svg?branch=master)](https://travis-ci.org/Steven-Roberts/gulp-chrome-manifest-iconify)
 [![dependencies Status](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/gulp-chrome-manifest-iconify?type=dev)
-[![Test Coverage](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/badges/coverage.svg)](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/coverage)
-[![Code Climate](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/badges/gpa.svg)](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9ced61028fa7804fa969/maintainability)](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9ced61028fa7804fa969/test_coverage)](https://codeclimate.com/github/Steven-Roberts/gulp-chrome-manifest-iconify/test_coverage)
 
 A [Gulp](https://github.com/gulpjs/gulp) plugin for
 [chrome-manifest-iconify](https://github.com/Steven-Roberts/chrome-manifest-iconify)

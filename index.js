@@ -38,8 +38,8 @@ const path = require('path');
  * master Icon
  * @returns {Stream} A Node stream that produces the icons
  */
-module.exports = (options) =>
-    through2.obj(function transform (file, enc, cb) {
+module.exports = (options) => through2.obj(
+    function transform (file, enc, cb) {
         if (file.isStream()) {
             cb(new gutil.PluginError(pluginName, 'Streams are not supported'));
 
@@ -73,6 +73,7 @@ module.exports = (options) =>
             .then(cb, (err) => {
                 cb(new gutil.PluginError(pluginName, err));
             });
-    });
+    }
+);
 
 module.exports.ResizeMode = chromeManifestIconify.ResizeMode;

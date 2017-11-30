@@ -8,10 +8,9 @@ const chromeManifestIconify = require('../');
 
 gulp.task('clean', () => del('build'));
 
-gulp.task('default', ['clean'], () =>
-    gulp.src('test-icon.png')
-        .pipe(chromeManifestIconify({
-            manifest: 'manifests/manifest.json',
-            resizeMode: chromeManifestIconify.ResizeMode.NEAREST_NEIGHBOR
-        }))
-        .pipe(gulp.dest('build')));
+gulp.task('default', ['clean'], () => gulp.src('test-icon.png')
+    .pipe(chromeManifestIconify({
+        manifest: 'manifests/manifest.json',
+        resizeMode: chromeManifestIconify.ResizeMode.NEAREST_NEIGHBOR
+    }))
+    .pipe(gulp.dest('build')));
