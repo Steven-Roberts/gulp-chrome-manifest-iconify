@@ -42,12 +42,12 @@
     "chai": "^4.1.2",
     "codeclimate-test-reporter": "^0.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.12.1",
+    "eslint": "^4.14.0",
     "eslint-config-steven-roberts": "github:Steven-Roberts/eslint-config",
     "gulp": "^3.9.1",
     "istanbul": "*",
-    "jsdoc-to-markdown": "^3.0.2",
-    "mocha": "^4.0.1",
+    "jsdoc-to-markdown": "^3.0.3",
+    "mocha": "^4.1.0",
     "stream-assert": "^2.0.3"
   }
 }
