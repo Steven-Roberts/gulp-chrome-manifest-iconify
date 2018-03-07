@@ -1,3 +1,4 @@
 env:
     node: true
+    es6: true
 extends: eslint-config-steven-roberts
