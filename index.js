@@ -21,9 +21,9 @@ const pluginName = require('./package.json').name;
 
 // NPM Imports
 const through2 = require('through2');
-const gutil = require('gulp-util');
+const Vinyl = require('vinyl');
 const chromeManifestIconify = require('chrome-manifest-iconify');
-const Promise = require('bluebird');
+const PluginError = require('plugin-error');
 const path = require('path');
 
 /**
@@ -41,7 +41,7 @@ const path = require('path');
 module.exports = (options) => through2.obj(
     function transform (file, enc, cb) {
         if (file.isStream()) {
-            cb(new gutil.PluginError(pluginName, 'Streams are not supported'));
+            cb(new PluginError(pluginName, 'Streams are not supported'));
 
             return;
         }
@@ -61,17 +61,24 @@ module.exports = (options) => through2.obj(
             masterIcon: file.contents
         });
 
-        Promise.try(chromeManifestIconify.async.bind(null, actualOptions))
+
+        new Promise((resolve, reject) => {
+            try {
+                resolve(chromeManifestIconify.async(actualOptions));
+            } catch (err) {
+                reject(err);
+            }
+        })
             .then((icons) => {
                 // eslint-disable-next-line no-invalid-this
-                icons.forEach((i) => this.push(new gutil.File({
+                icons.forEach((i) => this.push(new Vinyl({
                     path: i.path,
                     contents: i.contents,
                     base: path.dirname(options.manifest)
                 })));
             })
             .then(cb, (err) => {
-                cb(new gutil.PluginError(pluginName, err));
+                cb(new PluginError(pluginName, err));
             });
     }
 );

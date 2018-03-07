@@ -2,7 +2,7 @@
 
 const chromeManifestIconify = require('../');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
+const PluginError = require('plugin-error');
 const path = require('path');
 const streamAssert = require('stream-assert');
 
@@ -23,7 +23,7 @@ describe('gulp-chrome-manifest-iconify', () => {
                 manifest: getManifestPath('manifest.json')
             }))
             .on('error', (err) => {
-                err.should.be.an.instanceOf(gutil.PluginError)
+                err.should.be.an.instanceOf(PluginError)
                     .and.have.property('message', 'Streams are not supported');
                 cb();
             });
@@ -48,7 +48,7 @@ describe('gulp-chrome-manifest-iconify', () => {
                 manifest: Math.PI
             }))
             .on('error', (err) => {
-                err.should.be.an.instanceOf(gutil.PluginError)
+                err.should.be.an.instanceOf(PluginError)
                     .and.have.property('message',
                         'The manifest path must be a string');
                 cb();
