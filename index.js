@@ -16,15 +16,12 @@
  *         .pipe(gulp.dest('build')));
  */
 
-// Local Imports
-const pluginName = require('./package.json').name;
-
-// NPM Imports
-const through2 = require('through2');
-const Vinyl = require('vinyl');
-const chromeManifestIconify = require('chrome-manifest-iconify');
+const {name} = require('./package.json');
+const {async, ResizeMode} = require('chrome-manifest-iconify');
+const {dirname} = require('path');
+const {Transform} = require('stream');
 const PluginError = require('plugin-error');
-const path = require('path');
+const Vinyl = require('vinyl');
 
 /**
  * A Gulp plugin that generates icon set for a Chrome extension or app by
@@ -38,49 +35,50 @@ const path = require('path');
  * master Icon
  * @returns {Stream} A Node stream that produces the icons
  */
-module.exports = (options) => through2.obj(
-    function transform (file, enc, cb) {
-        if (file.isStream()) {
-            cb(new PluginError(pluginName, 'Streams are not supported'));
 
-            return;
-        }
+module.exports = (options) => {
+    const actualOptions = {
+        manifest: 'manifest.json',
+        ...options
+    };
+    const base = dirname(actualOptions.manifest);
+    const iconToFile = async (icon) => new Vinyl({
+        path: icon.path,
+        contents: await icon.contents,
+        base
+    });
 
-        if (file.isNull()) {
-            cb();
+    return new Transform({
+        objectMode: true,
+        transform (file, enc, cb) {
+            if (file.isStream()) {
+                cb(new PluginError(name, 'Streams are not supported'));
 
-            return;
-        }
-
-        // Create the options object by merging properties
-        const actualOptions = Object.assign({
-            // If no manifest is provided, use this as the default
-            manifest: 'manifest.json'
-        }, options, {
-            // Always use the file contents for the masterIcon property
-            masterIcon: file.contents
-        });
-
-
-        new Promise((resolve, reject) => {
-            try {
-                resolve(chromeManifestIconify.async(actualOptions));
-            } catch (err) {
-                reject(err);
+                return;
             }
-        })
-            .then((icons) => {
-                // eslint-disable-next-line no-invalid-this
-                icons.forEach((i) => this.push(new Vinyl({
-                    path: i.path,
-                    contents: i.contents,
-                    base: path.dirname(options.manifest)
-                })));
-            })
-            .then(cb, (err) => {
-                cb(new PluginError(pluginName, err));
-            });
-    }
-);
 
-module.exports.ResizeMode = chromeManifestIconify.ResizeMode;
+            if (file.isNull()) {
+                cb();
+
+                return;
+            }
+
+            async({
+                ...actualOptions,
+                masterIcon: file.contents
+            })
+                .then(async (icons) => {
+                    const files = await Promise.all(icons.map(iconToFile));
+                    for (const f of files) {
+                        this.push(f);
+                    }
+                })
+                .then(
+                    () => cb(),
+                    (err) => cb(new PluginError(name, err))
+                );
+        }
+    });
+};
+
+module.exports.ResizeMode = ResizeMode;

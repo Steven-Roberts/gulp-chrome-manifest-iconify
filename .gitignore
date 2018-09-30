@@ -1,4 +1,4 @@
 node_modules
-coverage
-test/build
 npm-debug.log*
+.nyc_output
+test/build

@@ -3,7 +3,7 @@
 const chromeManifestIconify = require('../');
 const gulp = require('gulp');
 const PluginError = require('plugin-error');
-const path = require('path');
+const {join} = require('path');
 const streamAssert = require('stream-assert');
 
 // Congifure Chai
@@ -11,7 +11,7 @@ const chai = require('chai');
 
 chai.should();
 
-const getPath = path.join.bind(null, __dirname);
+const getPath = join.bind(null, __dirname);
 const getManifestPath = getPath.bind(null, 'manifests');
 
 describe('gulp-chrome-manifest-iconify', () => {
@@ -45,12 +45,12 @@ describe('gulp-chrome-manifest-iconify', () => {
     it('should emit error when icon generation fails', (cb) => {
         gulp.src(getPath('test-icon.png'))
             .pipe(chromeManifestIconify({
-                manifest: Math.PI
+                manifest: 'xxx.json'
             }))
             .on('error', (err) => {
                 err.should.be.an.instanceOf(PluginError)
                     .and.have.property('message',
-                        'The manifest path must be a string');
+                        "ENOENT: no such file or directory, open 'xxx.json'");
                 cb();
             });
     });
