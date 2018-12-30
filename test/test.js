@@ -58,7 +58,7 @@ describe('gulp-chrome-manifest-iconify', () => {
     it('should generate icons', (cb) => {
         const expectedFilePaths = [
             getManifestPath('icon-16.png'),
-            getManifestPath('icon-128.bmp'),
+            getManifestPath('icon-128.jpg'),
             getManifestPath('a', 'icon-38.jpg')
         ];
 

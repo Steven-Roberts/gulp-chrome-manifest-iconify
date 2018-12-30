@@ -11,13 +11,13 @@
  *     gulp.src('icon.png')
  *         .pipe(chromeManifestIconify({
  *             manifest: 'src/manifest.json',
- *             resizeMode: chromeManifestIconify.ResizeMode.HERMITE
+ *             resizeMode: 'nearest'
  *         }))
  *         .pipe(gulp.dest('build')));
  */
 
 const {name} = require('./package.json');
-const {async, ResizeMode} = require('chrome-manifest-iconify');
+const {async} = require('chrome-manifest-iconify');
 const {dirname} = require('path');
 const {Transform} = require('stream');
 const PluginError = require('plugin-error');
@@ -26,13 +26,11 @@ const Vinyl = require('vinyl');
 /**
  * A Gulp plugin that generates icon set for a Chrome extension or app by
  * parsing the v2 manifest.
- * @borrows module:chrome-manifest-iconify.ResizeMode as ResizeMode
  * @param {object} options - The options for generating the icons
  * @param {string} [options.manifest=manifest.json] - The path to the v2
  * manifest.json
- * @param {module:gulp-chrome-manifest-iconify.ResizeMode}
- * [options.resizeMode=ResizeMode.BILINEAR] - The algorithm for resizing the
- * master Icon
+ * @param {string} [options.resizeMode] - The name of a
+ * {@link http://sharp.pixelplumbing.com/en/stable/api-resize Sharp kernel}
  * @returns {Stream} A Node stream that produces the icons
  */
 
@@ -80,5 +78,3 @@ module.exports = (options) => {
         }
     });
 };
-
-module.exports.ResizeMode = ResizeMode;

@@ -1,6 +1,6 @@
 {
   "name": "gulp-chrome-manifest-iconify",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "A gulp plugin that takes a master icon and automatically generates icon set for your Chrome extension or app by parsing the v2 manifest",
   "author": "Steven Roberts (https://steven-roberts.github.io/)",
   "homepage": "https://github.com/Steven-Roberts/gulp-chrome-manifest-iconify",
@@ -35,7 +35,7 @@
     "report": "nyc report -r=text-lcov | coveralls"
   },
   "dependencies": {
-    "chrome-manifest-iconify": "^4.0.0",
+    "chrome-manifest-iconify": "^5.0.0",
     "plugin-error": "^1.0.1",
     "vinyl": "^2.2.0"
   },
@@ -43,12 +43,12 @@
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "del": "^3.0.0",
-    "eslint": "^5.6.1",
+    "eslint": "^5.11.1",
     "eslint-config-steven-roberts": "github:Steven-Roberts/eslint-config",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
+    "nyc": "^13.1.0",
     "stream-assert": "^2.0.3"
   }
 }

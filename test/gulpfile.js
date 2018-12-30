@@ -6,11 +6,15 @@ const gulp = require('gulp');
 const del = require('del');
 const chromeManifestIconify = require('../');
 
-gulp.task('clean', () => del('build'));
-
-gulp.task('default', ['clean'], () => gulp.src('test-icon.png')
+const clean = () => del('build');
+const iconify = () => gulp.src('test-icon.png')
     .pipe(chromeManifestIconify({
         manifest: 'manifests/manifest.json',
-        resizeMode: chromeManifestIconify.ResizeMode.NEAREST_NEIGHBOR
+        resizeMode: 'nearest'
     }))
-    .pipe(gulp.dest('build')));
+    .pipe(gulp.dest('build'));
+const build = gulp.series(clean, iconify);
+
+exports.clean = clean;
+exports.build = build;
+exports.default = build;
