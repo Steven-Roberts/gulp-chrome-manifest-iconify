@@ -1,6 +1,6 @@
 {
   "name": "gulp-chrome-manifest-iconify",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A gulp plugin that takes a master icon and automatically generates icon set for your Chrome extension or app by parsing the v2 manifest",
   "author": "Steven Roberts (https://steven-roberts.github.io/)",
   "homepage": "https://github.com/Steven-Roberts/gulp-chrome-manifest-iconify",
@@ -18,7 +18,7 @@
     "extension"
   ],
   "engines": {
-    "node": ">=9.0.0"
+    "node": ">=10.0.0"
   },
   "main": "index.js",
   "license": "MIT",
@@ -27,28 +27,27 @@
   ],
   "scripts": {
     "docs": "jsdoc2md -d 3 -t jsdoc2md/template.hbs index.js node_modules/chrome-manifest-iconify/**/*.js > README.md",
-    "lint": "eslint .",
+    "lint": "semistandard",
     "unit": "mocha",
-    "gulp": "gulp --gulpfile test/gulpfile.js",
+    "gulp": "gulp --gulpfile test/gulpfile.mjs",
     "test": "npm run lint && npm run unit && npm run gulp",
     "coverage": "nyc npm run unit",
     "report": "nyc report -r=text-lcov | coveralls"
   },
   "dependencies": {
-    "chrome-manifest-iconify": "^5.0.2",
+    "chrome-manifest-iconify": "^5.0.3",
     "plugin-error": "^1.0.1",
     "vinyl": "^2.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.0.6",
-    "del": "^5.1.0",
-    "eslint": "^6.5.1",
-    "eslint-config-steven-roberts": "github:Steven-Roberts/eslint-config",
+    "del": "^6.0.0",
     "gulp": "^4.0.2",
-    "jsdoc-to-markdown": "^5.0.1",
-    "mocha": "^6.2.1",
-    "nyc": "^14.1.1",
+    "jsdoc-to-markdown": "^6.0.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "semistandard": "*",
     "stream-assert": "^2.0.3"
   }
 }

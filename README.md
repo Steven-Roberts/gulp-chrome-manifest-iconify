@@ -51,6 +51,6 @@ parsing the v2 manifest.
 | --- | --- | --- | --- |
 | options | <code>object</code> |  | The options for generating the icons |
 | [options.manifest] | <code>string</code> | <code>&quot;manifest.json&quot;</code> | The path to the v2 manifest.json |
-| [options.resizeMode] | <code>string</code> |  | The name of a [Sharp kernel](http://sharp.pixelplumbing.com/en/stable/api-resize) |
+| [options.resizeMode] | <code>string</code> |  | The name of a [Sharp kernel](https://sharp.pixelplumbing.com/api-resize#resize) |
 
 
