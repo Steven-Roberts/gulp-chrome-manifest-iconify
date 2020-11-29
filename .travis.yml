@@ -1,8 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-  - '10'
-  - '15'
+  - node
 after_success:
   - npm run coverage
   - npm run report
